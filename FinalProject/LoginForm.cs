@@ -12,6 +12,10 @@ namespace FinalProject
 {
     public partial class LoginForm : Form
     {
+        private string role;
+
+        public string Role { get => role; }
+
         public LoginForm()
         {
             InitializeComponent();
@@ -21,16 +25,14 @@ namespace FinalProject
         {
             string login = loginTextBox.Text;
             string password = passwordTextBox.Text;
-            string role = DBController.AuthorizationUser(login, password);
-            if (role != "guest")
+            role = DBController.AuthorizationUser(login, password);
+            if (Role != "guest")
             {
                 DialogResult = DialogResult.OK;
                 this.Close();
             }
             else
-            {
                 MessageBox.Show("Пароль или логин введены неверно!", "Ошибка авторизации", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void addNewUserButton_Click(object sender, EventArgs e)
@@ -38,9 +40,14 @@ namespace FinalProject
             string login = regLoginTextBox.Text;
             string password = regPasswordTextBox.Text;
             if (regPasswordTextBox.Text.CompareTo(regRepeatPaswordTextBox.Text) != 0)
-            {
                 MessageBox.Show("Пароли должны совпадать!", "Ошибка регистрации", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+        }
+
+        private void guestButton_Click(object sender, EventArgs e)
+        {
+            role = "guest";
+            DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

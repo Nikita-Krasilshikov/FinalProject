@@ -32,6 +32,7 @@ namespace FinalProject
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.guestButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.loginTextBox = new System.Windows.Forms.TextBox();
@@ -63,6 +64,7 @@ namespace FinalProject
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.guestButton);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.loginTextBox);
@@ -75,6 +77,16 @@ namespace FinalProject
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Авторизация";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // guestButton
+            // 
+            this.guestButton.Location = new System.Drawing.Point(187, 187);
+            this.guestButton.Name = "guestButton";
+            this.guestButton.Size = new System.Drawing.Size(182, 29);
+            this.guestButton.TabIndex = 9;
+            this.guestButton.Text = "Гостевой режим";
+            this.guestButton.UseVisualStyleBackColor = true;
+            this.guestButton.Click += new System.EventHandler(this.guestButton_Click);
             // 
             // label2
             // 
@@ -105,6 +117,7 @@ namespace FinalProject
             // 
             this.passwordTextBox.Location = new System.Drawing.Point(186, 100);
             this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(182, 20);
             this.passwordTextBox.TabIndex = 4;
             // 
@@ -166,6 +179,7 @@ namespace FinalProject
             // 
             this.regRepeatPaswordTextBox.Location = new System.Drawing.Point(187, 118);
             this.regRepeatPaswordTextBox.Name = "regRepeatPaswordTextBox";
+            this.regRepeatPaswordTextBox.PasswordChar = '*';
             this.regRepeatPaswordTextBox.Size = new System.Drawing.Size(182, 20);
             this.regRepeatPaswordTextBox.TabIndex = 13;
             // 
@@ -180,6 +194,7 @@ namespace FinalProject
             // 
             this.regPasswordTextBox.Location = new System.Drawing.Point(187, 80);
             this.regPasswordTextBox.Name = "regPasswordTextBox";
+            this.regPasswordTextBox.PasswordChar = '*';
             this.regPasswordTextBox.Size = new System.Drawing.Size(182, 20);
             this.regPasswordTextBox.TabIndex = 11;
             // 
@@ -227,6 +242,7 @@ namespace FinalProject
         private System.Windows.Forms.TextBox regLoginTextBox;
         private System.Windows.Forms.TextBox regPasswordTextBox;
         private System.Windows.Forms.Button addNewUserButton;
+        private System.Windows.Forms.Button guestButton;
     }
 }
 

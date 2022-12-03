@@ -8,21 +8,10 @@ namespace FinalProject
 {
     public partial class StudentsForm : Form
     {
-        public List<Student> students;
-        // Передача коллекции студентов в конструктор
-        public StudentsForm(List<Student> students)
-        {
-            InitializeComponent();
-            studentsDataGridView.AutoGenerateColumns = false;
-            // Сортировка коллекции по убыванию ID студента
-            students = students.OrderByDescending(o => o.StudentID).ToList();
-            this.students = students;
-            // Установка источника данных для таблицы
-            studentsDataGridView.DataSource = students;
-        }
         public StudentsForm()
         {
             InitializeComponent();
+            studentsDataGridView.AutoGenerateColumns = false;
         }
 
         private void closeButton_Click(object sender, EventArgs e)
@@ -30,19 +19,13 @@ namespace FinalProject
             this.Close();
         }
 
-        // Обработчик нажатия на кнопку "удалить"
         private void removeButton_Click(object sender, EventArgs e)
         {
-            // Проверка на то, что таблица не пустая
             if (studentsDataGridView.RowCount > 0)
             {
-                // Получение экземпляра студента из таблицы (выделенная запись в таблице)
-                Student student = (Student)studentsDataGridView.CurrentRow.DataBoundItem;
-                // Удаление студента из коллекции
-                students.Remove(student);
-                // Обновление источника данных таблицы, чтобы таблица перерисовалась
-                studentsDataGridView.DataSource = null;
-                studentsDataGridView.DataSource = students;
+                int id = Convert.ToInt32(studentsDataGridView.CurrentRow.Cells[0].Value);
+                DBController.DeleteStudent(id);
+                studentsDataGridView.Rows.RemoveAt(studentsDataGridView.CurrentRow.Index);
             }
         }
 
@@ -50,17 +33,26 @@ namespace FinalProject
         {
             if (studentsDataGridView.RowCount > 0)
             {
-                // Получение экземпляра студента из таблицы (выделенная запись в таблице)
-                Student student = (Student)studentsDataGridView.CurrentRow.DataBoundItem;
-                EditForm ef = new EditForm(student);
-                // Утсановка владельца формы, для доступа к коллекции студентов
-                ef.Owner = this;
+                int id = Convert.ToInt32(studentsDataGridView.CurrentRow.Cells[0].Value);
+                EditForm ef = new EditForm(id);
                 if (ef.ShowDialog() == DialogResult.OK)
                 {
-                    studentsDataGridView.DataSource = null;
-                    studentsDataGridView.DataSource = students;
+                    this.studentTableAdapter.Fill(this.students_dbDataSet.student);
+                    studentsDataGridView.Update();
                 }
             }
+        }
+
+        private void StudentsForm_Load(object sender, EventArgs e)
+        {
+            this.studentTableAdapter.Fill(this.students_dbDataSet.student);
+            MainForm mainForm = this.Owner as MainForm;
+            if (mainForm.Role == "admin" || mainForm.Role == "user")
+            {
+                removeButton.Visible = true;
+                editButton.Visible = true;
+            }
+            studentBindingSource.Sort = "id DESC";
         }
     }
 }

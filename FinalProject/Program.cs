@@ -19,7 +19,7 @@ namespace FinalProject
             Application.SetCompatibleTextRenderingDefault(false);
             LoginForm lf = new LoginForm();
             if (lf.ShowDialog() == DialogResult.OK)
-                Application.Run(new MainForm());
+                Application.Run(new MainForm(lf.Role));
         }
     }
 }

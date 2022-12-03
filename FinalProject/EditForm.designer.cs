@@ -101,7 +101,7 @@
             this.foundationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.foundationComboBox.FormattingEnabled = true;
             this.foundationComboBox.Items.AddRange(new object[] {
-            "Бюджетная",
+            "Бюджет",
             "Платная"});
             this.foundationComboBox.Location = new System.Drawing.Point(33, 434);
             this.foundationComboBox.Name = "foundationComboBox";

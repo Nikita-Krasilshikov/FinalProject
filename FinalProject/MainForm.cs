@@ -8,71 +8,68 @@ namespace FinalProject
 {
     public partial class MainForm : Form
     {
-        // Коллекция студентов с инициализацией
-        List<Student> students = new List<Student>() {
-            new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Мужской", 1201, "Платная", 0, "Староста"),
-            new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Мужской", 1002, "Бюджетная", 2, ""),
-            new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Женский", 1103, "Платная", 3, ""),
-            new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Мужской", 1004, "Платная", 0, ""),
-            new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Мужской", 1005, "Бюджетная", 4, ""),
-            new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Женский", 1006, "Платная", 1, ""),
-            new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Мужской", 1008, "Платная", 2, ""),
-            new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Женский", 1011, "Бюджетная", 0, ""),
-            new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Женский", 13, "Платная", 1, ""),
-            new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Мужской", 1045, "Бюджетная", 0, "")
-        };
+        private List<object> studentInfo;
+        private string role;
 
-        public MainForm()
+        public string Role { get => role; }
+
+        public MainForm(string role)
         {
             InitializeComponent();
-            // Вывод в Label кол-ва студентов
-            studentsCountLabel.Text = $"Количество записей: {students.Count.ToString()}";
-            // Установка начальных значений в comboBox-ах
+            this.role = role;
+            studentsCountLabel.Text = $"Количество записей: {DBController.StudentsCount()}";
             genderComboBox.SelectedIndex = 0;
             foundationComboBox.SelectedIndex = 0;
+            this.Text += " " + role.ToUpper();
+            if (role == "admin")
+            {
+                usersButton.Visible = true;
+            }
+            if (role == "admin" || role == "user")
+            {
+                addStudentButton.Visible = true;
+            }
+            if (role == "guest")
+            {
+                fieldGroupBox.Visible = false;
+                this.Height = 141;
+            }
         }
 
         private void showGroupListButton_Click(object sender, EventArgs e)
         {
-            // Создание и вывод формы со списком студентов
-            StudentsForm studentsForm = new StudentsForm(students);
+            StudentsForm studentsForm = new StudentsForm();
+            studentsForm.Owner = this;
             studentsForm.ShowDialog();
         }
 
         private void workingButton_Click(object sender, EventArgs e)
         {
-            // Создание и вывод формы со списком студентов-платников
-            PaidForm paidForm = new PaidForm(students.Where(o => o.Foundation == "Платная").ToList());
+            PaidForm paidForm = new PaidForm();
             paidForm.ShowDialog();
         }
 
-        // Обработчик нажатия кнопки "Добавить студента"
         private void addStudentButton_Click(object sender, EventArgs e)
         {
             int studentID;
-            // Проверка на удачное преобразование из строки в число
             try
             {
                 studentID = int.Parse(studentsIDTextBox.Text);
             }
             catch (FormatException)
             {
-                // Если во время преобразования произошла ошибка FormatException, это значит, что введено не числовое значение.
                 MessageBox.Show("Поле ID студента должно быть числом!", "Ошибка ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             string firstName, lastName;
             int debts = 0;
-            // Проверка на существование студента с таким же ID
-            // Lambda выражение. o - каждый элемент коллекции
-            // Проверяем и считаем кол-во студентов с ID равным studentID
-            if (students.Count(o => o.StudentID == studentID) > 0)
+            if (DBController.HasStudent(studentID))
             {
                 MessageBox.Show("Студент с таким ID уже существует!", "Ошибка уникальности", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            // Trim - функция, очищающая пробельные символы в начале и в конце строки
+
             if (debtsTextBox.Text.Trim().Length == 0)
             {
                 try
@@ -98,23 +95,16 @@ namespace FinalProject
                 return;
             }
 
-            // Создание и добавление студента в коллекцию
-            students.Add(new Student
-            (
-                firstName,
-                lastName,
-                middleNameTextBox.Text,
-                birthDateDateTimePicker.Value.Day,
-                birthDateDateTimePicker.Value.Month,
-                birthDateDateTimePicker.Value.Year,
-                genderComboBox.Text,
-                studentID,
-                foundationComboBox.Text,
-                debts,
-                noteTextBox.Text
-            ));
+            studentInfo.Add(studentID);
+            studentInfo.Add(firstName);
+            studentInfo.Add(lastName);
+            studentInfo.Add(middleNameTextBox.Text);
+            studentInfo.Add(birthDateDateTimePicker.Value);
+            studentInfo.Add(genderComboBox.Text);
+            studentInfo.Add(foundationComboBox.Text);
+            studentInfo.Add(debts);
+            studentInfo.Add(noteTextBox.Text);
 
-            // Очищение полей
             firstNameTextBox.Text = "";
             lastNameTextBox.Text = "";
             middleNameTextBox.Text = "";
@@ -124,12 +114,20 @@ namespace FinalProject
             debtsTextBox.Text = "";
             noteTextBox.Text = "";
 
-            studentsCountLabel.Text = $"Количество записей: {students.Count.ToString()}";
+            DBController.AddStudent(studentInfo);
+
+            studentsCountLabel.Text = $"Количество записей: {DBController.StudentsCount()}";
         }
 
         private void exitButton_Click(object sender, EventArgs e)
         {
             Application.Restart();
+        }
+
+        private void usersButton_Click(object sender, EventArgs e)
+        {
+            UsersForm uf = new UsersForm();
+            uf.ShowDialog();
         }
     }
 }

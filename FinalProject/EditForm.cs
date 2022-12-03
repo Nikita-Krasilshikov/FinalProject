@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -6,26 +7,26 @@ namespace FinalProject
 {
     public partial class EditForm : Form
     {
-        Student student;
-        public EditForm(Student student)
+        int studentId;
+        List<object> studentInfo;
+        public EditForm(int studentId)
         {
-            this.student = student;
             InitializeComponent();
-            // Получение значений для каждого элемента формы
-            firstNameTextBox.Text = student.FirstName;
-            lastNameTextBox.Text = student.LastName;
-            middleNameTextBox.Text = student.MiddleName;
-            genderComboBox.Text = student.Gender;
-            studentsIDTextBox.Text = student.StudentID.ToString();
-            foundationComboBox.Text = student.Foundation;
-            debtsTextBox.Text = student.Debts.ToString();
-            noteTextBox.Text = student.Note;
+            this.studentId = studentId;
+            studentInfo = DBController.GetStudentInfo(studentId);
+            studentsIDTextBox.Text = studentInfo[0].ToString();
+            firstNameTextBox.Text = studentInfo[1].ToString();
+            lastNameTextBox.Text = studentInfo[2].ToString();
+            middleNameTextBox.Text = studentInfo[3].ToString();
+            birthDateDateTimePicker.Value = DateTime.Parse(studentInfo[4].ToString());
+            genderComboBox.Text = studentInfo[5].ToString();
+            foundationComboBox.Text = studentInfo[6].ToString();
+            debtsTextBox.Text = studentInfo[7].ToString();
+            noteTextBox.Text = studentInfo[8].ToString();
         }
-
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            // Установка указателя на то, как завершилась работа с формой (просто закрытие или обновление данных)
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
@@ -45,8 +46,7 @@ namespace FinalProject
 
             string firstName, lastName;
             int debts = 0;
-            StudentsForm parent = this.Owner as StudentsForm;
-            if (this.student.StudentID != studentID && parent.students.Count(o => o.StudentID == studentID) > 0)
+            if (this.studentId != studentID && DBController.HasStudent(studentID))
             {
                 MessageBox.Show("Студент с таким ID уже существует!", "Ошибка уникальности", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -76,16 +76,17 @@ namespace FinalProject
                 return;
             }
 
-            student.FirstName = firstName;
-            student.LastName = lastName;
-            student.MiddleName = middleNameTextBox.Text;
-            student.Gender = genderComboBox.Text;
-            student.StudentID = studentID;
-            student.Foundation = foundationComboBox.Text;
-            student.Debts = debts;
-            student.Note = noteTextBox.Text;
+            studentInfo[1] = firstNameTextBox.Text;
+            studentInfo[2] = lastNameTextBox.Text;
+            studentInfo[3] = middleNameTextBox.Text;
+            studentInfo[4] = birthDateDateTimePicker.Value;
+            studentInfo[5] = genderComboBox.Text;
+            studentInfo[6] = foundationComboBox.Text;
+            studentInfo[7] = debtsTextBox.Text;
+            studentInfo[8] = noteTextBox.Text;
 
-            // Установка указателя на то, как завершилась работа с формой (просто закрытие или обновление данных)
+            DBController.UpdateStudent(studentInfo);
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
