@@ -39,21 +39,33 @@ namespace FinalProject
         {
             string login = regLoginTextBox.Text;
             string password = regPasswordTextBox.Text;
+            if (regLoginTextBox.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Логин не может быть пустым!", "Ошибка регистрации", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (regPasswordTextBox.Text.Trim().Length < 6)
+            {
+                MessageBox.Show("Пароль не может быть короче 6 символов!", "Ошибка регистрации", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (regPasswordTextBox.Text.CompareTo(regRepeatPaswordTextBox.Text) != 0)
+            {
                 MessageBox.Show("Пароли должны совпадать!", "Ошибка регистрации", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
-                try
-                {
-                    DBController.AddNewUser(login, password);
-                    regLoginTextBox.Text = "";
-                    regPasswordTextBox.Text = "";
-                    regRepeatPaswordTextBox.Text = "";
-                    tabControl1.SelectedTab = tabPage1;
-                }
-                catch (AlreadyExistUserException ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка добавления", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                return;
+            }
+            try
+            {
+                DBController.AddNewUser(login, password);
+                regLoginTextBox.Text = "";
+                regPasswordTextBox.Text = "";
+                regRepeatPaswordTextBox.Text = "";
+                tabControl1.SelectedTab = tabPage1;
+            }
+            catch (AlreadyExistUserException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка добавления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void guestButton_Click(object sender, EventArgs e)
