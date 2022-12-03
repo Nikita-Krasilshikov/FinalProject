@@ -51,7 +51,7 @@ namespace FinalProject
         {
             if (!IsUserExist(login))
             {
-                string query = "INSERT INTO \"user\" (login, password, role) VALUES(@Login, @Password, user)";
+                string query = "INSERT INTO \"user\" (login, password, role) VALUES (@Login, @Password, 'user')";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();

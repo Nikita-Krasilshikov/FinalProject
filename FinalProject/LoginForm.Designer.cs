@@ -154,7 +154,7 @@ namespace FinalProject
             this.label5.Location = new System.Drawing.Point(188, 103);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 13);
-            this.label5.TabIndex = 16;
+            this.label5.TabIndex = 4;
             this.label5.Text = "Повтор пароля";
             // 
             // label3
@@ -163,7 +163,7 @@ namespace FinalProject
             this.label3.Location = new System.Drawing.Point(187, 65);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
-            this.label3.TabIndex = 15;
+            this.label3.TabIndex = 2;
             this.label3.Text = "Пароль";
             // 
             // label4
@@ -172,7 +172,7 @@ namespace FinalProject
             this.label4.Location = new System.Drawing.Point(187, 29);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 13);
-            this.label4.TabIndex = 14;
+            this.label4.TabIndex = 0;
             this.label4.Text = "Логин";
             // 
             // regRepeatPaswordTextBox
@@ -181,14 +181,14 @@ namespace FinalProject
             this.regRepeatPaswordTextBox.Name = "regRepeatPaswordTextBox";
             this.regRepeatPaswordTextBox.PasswordChar = '*';
             this.regRepeatPaswordTextBox.Size = new System.Drawing.Size(182, 20);
-            this.regRepeatPaswordTextBox.TabIndex = 13;
+            this.regRepeatPaswordTextBox.TabIndex = 5;
             // 
             // regLoginTextBox
             // 
             this.regLoginTextBox.Location = new System.Drawing.Point(187, 44);
             this.regLoginTextBox.Name = "regLoginTextBox";
             this.regLoginTextBox.Size = new System.Drawing.Size(182, 20);
-            this.regLoginTextBox.TabIndex = 10;
+            this.regLoginTextBox.TabIndex = 1;
             // 
             // regPasswordTextBox
             // 
@@ -196,14 +196,14 @@ namespace FinalProject
             this.regPasswordTextBox.Name = "regPasswordTextBox";
             this.regPasswordTextBox.PasswordChar = '*';
             this.regPasswordTextBox.Size = new System.Drawing.Size(182, 20);
-            this.regPasswordTextBox.TabIndex = 11;
+            this.regPasswordTextBox.TabIndex = 3;
             // 
             // addNewUserButton
             // 
             this.addNewUserButton.Location = new System.Drawing.Point(187, 153);
             this.addNewUserButton.Name = "addNewUserButton";
             this.addNewUserButton.Size = new System.Drawing.Size(182, 29);
-            this.addNewUserButton.TabIndex = 12;
+            this.addNewUserButton.TabIndex = 6;
             this.addNewUserButton.Text = "Создать аккаунт";
             this.addNewUserButton.UseVisualStyleBackColor = true;
             this.addNewUserButton.Click += new System.EventHandler(this.addNewUserButton_Click);
