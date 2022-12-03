@@ -8,5 +8,8 @@ namespace FinalProject
 {
     public class AlreadyExistUserException : Exception
     {
+        public AlreadyExistUserException(string message) : base(message)
+        {
+        }
     }
 }

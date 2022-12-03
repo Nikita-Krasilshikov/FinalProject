@@ -65,7 +65,7 @@ namespace FinalProject
             }
             else
             {
-                throw new AlreadyExistUserException();
+                throw new AlreadyExistUserException("Пользователь с таким логином уже существует!");
             }
         }
 

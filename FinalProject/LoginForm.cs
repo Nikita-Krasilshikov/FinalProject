@@ -41,6 +41,14 @@ namespace FinalProject
             string password = regPasswordTextBox.Text;
             if (regPasswordTextBox.Text.CompareTo(regRepeatPaswordTextBox.Text) != 0)
                 MessageBox.Show("Пароли должны совпадать!", "Ошибка регистрации", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            try
+            {
+                DBController.AddNewUser(login, password);
+            }
+            catch (AlreadyExistUserException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка добавления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void guestButton_Click(object sender, EventArgs e)
