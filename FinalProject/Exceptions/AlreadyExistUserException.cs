@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FinalProject
 {
+    // Класс исключения для ситуации, когда пользователь с данным логином уже существует
     public class AlreadyExistUserException : Exception
     {
         public AlreadyExistUserException(string message) : base(message)

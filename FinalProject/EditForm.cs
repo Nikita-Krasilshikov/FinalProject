@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace FinalProject
@@ -14,6 +13,7 @@ namespace FinalProject
             InitializeComponent();
             this.studentId = studentId;
             studentInfo = DBController.GetStudentInfo(studentId);
+            // Заполнение элементов формы данными из БД
             studentsIDTextBox.Text = studentInfo[0].ToString();
             firstNameTextBox.Text = studentInfo[1].ToString();
             lastNameTextBox.Text = studentInfo[2].ToString();
@@ -76,6 +76,7 @@ namespace FinalProject
                 return;
             }
 
+            // Формирование объекта с данными для отправки в БД
             studentInfo[1] = firstNameTextBox.Text;
             studentInfo[2] = lastNameTextBox.Text;
             studentInfo[3] = middleNameTextBox.Text;

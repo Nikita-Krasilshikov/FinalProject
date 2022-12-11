@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinalProject
@@ -15,6 +8,7 @@ namespace FinalProject
         public PaidForm()
         {
             InitializeComponent();
+            // Фильтрация и соритровка данных
             studentBindingSource.Filter = "foundation LIKE 'Платная%'";
             studentBindingSource.Sort = "id DESC";
         }
@@ -26,6 +20,7 @@ namespace FinalProject
 
         private void PaidForm_Load(object sender, EventArgs e)
         {
+            // Загрузка данных из датасета в таблицу
             this.paidStudentTableAdapter.Fill(this.students_dbDataSet.student);
         }
     }

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace FinalProject
@@ -21,6 +19,7 @@ namespace FinalProject
             genderComboBox.SelectedIndex = 0;
             foundationComboBox.SelectedIndex = 0;
             this.Text += " " + role.ToUpper();
+            // В зависимости от роли пользователя, скрываются или отображаются определённые компоненты
             if (role == "admin")
             {
                 usersButton.Visible = true;

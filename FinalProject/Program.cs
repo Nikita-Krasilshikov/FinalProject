@@ -8,16 +8,14 @@ namespace FinalProject
 {
     internal static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            // Изначально запускается диалог для входа или регистрации
             LoginForm lf = new LoginForm();
+            // Если все данные введены верно, то запускается основное окно
             if (lf.ShowDialog() == DialogResult.OK)
                 Application.Run(new MainForm(lf.Role));
         }

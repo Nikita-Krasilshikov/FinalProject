@@ -9,22 +9,30 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
+    // Класс для доступа к БД
     public class DBController
     {
+        // Строка подключения
         private static string connectionString = @"Data Source=emiit.ru;Initial Catalog=students_db;Persist Security Info=True;User ID=user-50;Password=9218964503";
         public static string AuthorizationUser(string login, string password)
         {
+            // Запрос в БД
             string query = "SELECT * FROM \"user\" WHERE login=@Login AND password=@Password";
+            // Роль по-умолчанию
             string role = "guest";
+            // Создание подключения
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
+                // Открытие подключения
                 connection.Open();
                 SqlCommand cmd = new SqlCommand(query, connection);
+                // Параметризация запроса, для безопасности и удобства
                 SqlParameter loginParameter = new SqlParameter("@Login", login);
                 SqlParameter passwordParameter = new SqlParameter("@Password", password);
                 cmd.Parameters.Add(loginParameter);
                 cmd.Parameters.Add(passwordParameter);
                 SqlDataReader reader = cmd.ExecuteReader();
+                // Получение информации из БД
                 while (reader.Read())
                     role = Convert.ToString(reader.GetValue(3));
 
@@ -76,6 +84,7 @@ namespace FinalProject
             {
                 connection.Open();
                 SqlCommand cmd = new SqlCommand(query, connection);
+                // Запрос на олучение единственного значения из БД
                 int count = (int)cmd.ExecuteScalar();
                 return count;
             }
@@ -90,6 +99,7 @@ namespace FinalProject
                 SqlCommand cmd = new SqlCommand(query, connection);
                 SqlParameter idParameter = new SqlParameter("@Id", id);
                 cmd.Parameters.Add(idParameter);
+                // Если запрос ничего не возвращает, то необходимо выполнить данную команду
                 cmd.ExecuteNonQuery();
             }
         }
