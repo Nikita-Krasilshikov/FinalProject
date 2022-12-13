@@ -61,7 +61,7 @@
             this.addStudentButton.Location = new System.Drawing.Point(12, 634);
             this.addStudentButton.Name = "addStudentButton";
             this.addStudentButton.Size = new System.Drawing.Size(713, 23);
-            this.addStudentButton.TabIndex = 18;
+            this.addStudentButton.TabIndex = 0;
             this.addStudentButton.Text = "Добавить студента";
             this.addStudentButton.UseVisualStyleBackColor = true;
             this.addStudentButton.Visible = false;
@@ -72,7 +72,7 @@
             this.showGroupListButton.Location = new System.Drawing.Point(300, 10);
             this.showGroupListButton.Name = "showGroupListButton";
             this.showGroupListButton.Size = new System.Drawing.Size(254, 23);
-            this.showGroupListButton.TabIndex = 19;
+            this.showGroupListButton.TabIndex = 1;
             this.showGroupListButton.Text = "Отобразить список группы";
             this.showGroupListButton.UseVisualStyleBackColor = true;
             this.showGroupListButton.Click += new System.EventHandler(this.showGroupListButton_Click);
@@ -82,7 +82,7 @@
             this.workingButton.Location = new System.Drawing.Point(300, 39);
             this.workingButton.Name = "workingButton";
             this.workingButton.Size = new System.Drawing.Size(254, 23);
-            this.workingButton.TabIndex = 20;
+            this.workingButton.TabIndex = 2;
             this.workingButton.Text = "Выполнить обработку";
             this.workingButton.UseVisualStyleBackColor = true;
             this.workingButton.Click += new System.EventHandler(this.workingButton_Click);
@@ -101,7 +101,7 @@
             this.exitButton.Location = new System.Drawing.Point(650, 10);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(75, 23);
-            this.exitButton.TabIndex = 22;
+            this.exitButton.TabIndex = 4;
             this.exitButton.Text = "Выход";
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
@@ -111,7 +111,7 @@
             this.usersButton.Location = new System.Drawing.Point(575, 39);
             this.usersButton.Name = "usersButton";
             this.usersButton.Size = new System.Drawing.Size(150, 23);
-            this.usersButton.TabIndex = 23;
+            this.usersButton.TabIndex = 3;
             this.usersButton.Text = "Список пользователей";
             this.usersButton.UseVisualStyleBackColor = true;
             this.usersButton.Visible = false;
@@ -189,21 +189,21 @@
             this.foundationComboBox.Location = new System.Drawing.Point(44, 435);
             this.foundationComboBox.Name = "foundationComboBox";
             this.foundationComboBox.Size = new System.Drawing.Size(197, 21);
-            this.foundationComboBox.TabIndex = 31;
+            this.foundationComboBox.TabIndex = 6;
             // 
             // debtsTextBox
             // 
             this.debtsTextBox.Location = new System.Drawing.Point(42, 506);
             this.debtsTextBox.Name = "debtsTextBox";
             this.debtsTextBox.Size = new System.Drawing.Size(199, 20);
-            this.debtsTextBox.TabIndex = 30;
+            this.debtsTextBox.TabIndex = 7;
             // 
             // noteTextBox
             // 
             this.noteTextBox.Location = new System.Drawing.Point(44, 577);
             this.noteTextBox.Name = "noteTextBox";
             this.noteTextBox.Size = new System.Drawing.Size(197, 20);
-            this.noteTextBox.TabIndex = 29;
+            this.noteTextBox.TabIndex = 8;
             // 
             // label5
             // 
@@ -259,7 +259,7 @@
             this.genderComboBox.Location = new System.Drawing.Point(44, 294);
             this.genderComboBox.Name = "genderComboBox";
             this.genderComboBox.Size = new System.Drawing.Size(197, 21);
-            this.genderComboBox.TabIndex = 23;
+            this.genderComboBox.TabIndex = 4;
             // 
             // birthDateDateTimePicker
             // 
@@ -267,7 +267,7 @@
             this.birthDateDateTimePicker.MaxDate = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);
             this.birthDateDateTimePicker.Name = "birthDateDateTimePicker";
             this.birthDateDateTimePicker.Size = new System.Drawing.Size(197, 20);
-            this.birthDateDateTimePicker.TabIndex = 22;
+            this.birthDateDateTimePicker.TabIndex = 3;
             this.birthDateDateTimePicker.Value = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);
             // 
             // studentsIDTextBox
@@ -275,28 +275,28 @@
             this.studentsIDTextBox.Location = new System.Drawing.Point(44, 361);
             this.studentsIDTextBox.Name = "studentsIDTextBox";
             this.studentsIDTextBox.Size = new System.Drawing.Size(199, 20);
-            this.studentsIDTextBox.TabIndex = 21;
+            this.studentsIDTextBox.TabIndex = 5;
             // 
             // middleNameTextBox
             // 
             this.middleNameTextBox.Location = new System.Drawing.Point(42, 157);
             this.middleNameTextBox.Name = "middleNameTextBox";
             this.middleNameTextBox.Size = new System.Drawing.Size(199, 20);
-            this.middleNameTextBox.TabIndex = 20;
+            this.middleNameTextBox.TabIndex = 2;
             // 
             // lastNameTextBox
             // 
             this.lastNameTextBox.Location = new System.Drawing.Point(42, 94);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(199, 20);
-            this.lastNameTextBox.TabIndex = 19;
+            this.lastNameTextBox.TabIndex = 1;
             // 
             // firstNameTextBox
             // 
             this.firstNameTextBox.Location = new System.Drawing.Point(42, 36);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(199, 20);
-            this.firstNameTextBox.TabIndex = 18;
+            this.firstNameTextBox.TabIndex = 0;
             // 
             // MainForm
             // 

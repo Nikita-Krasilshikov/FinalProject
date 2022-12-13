@@ -14,6 +14,7 @@ namespace FinalProject
         public MainForm(string role)
         {
             InitializeComponent();
+            studentInfo = new List<object>();
             this.role = role;
             studentsCountLabel.Text = $"Количество записей: {DBController.StudentsCount()}";
             genderComboBox.SelectedIndex = 0;
@@ -69,8 +70,7 @@ namespace FinalProject
                 return;
             }
 
-            if (debtsTextBox.Text.Trim().Length == 0)
-            {
+            if (debtsTextBox.Text.Trim().Length != 0)
                 try
                 {
                     debts = int.Parse(debtsTextBox.Text.Trim());
@@ -80,7 +80,7 @@ namespace FinalProject
                     MessageBox.Show("Поле Кол-во долгов должно быть числом!", "Ошибка формата", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-            }
+
             firstName = firstNameTextBox.Text;
             if (firstName.Trim().Length == 0)
             {

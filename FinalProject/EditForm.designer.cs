@@ -55,7 +55,7 @@
             this.saveButton.Location = new System.Drawing.Point(14, 633);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(218, 23);
-            this.saveButton.TabIndex = 40;
+            this.saveButton.TabIndex = 9;
             this.saveButton.Text = "Сохранить";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
@@ -106,21 +106,21 @@
             this.foundationComboBox.Location = new System.Drawing.Point(33, 434);
             this.foundationComboBox.Name = "foundationComboBox";
             this.foundationComboBox.Size = new System.Drawing.Size(197, 21);
-            this.foundationComboBox.TabIndex = 35;
+            this.foundationComboBox.TabIndex = 6;
             // 
             // debtsTextBox
             // 
             this.debtsTextBox.Location = new System.Drawing.Point(31, 505);
             this.debtsTextBox.Name = "debtsTextBox";
             this.debtsTextBox.Size = new System.Drawing.Size(199, 20);
-            this.debtsTextBox.TabIndex = 34;
+            this.debtsTextBox.TabIndex = 7;
             // 
             // noteTextBox
             // 
             this.noteTextBox.Location = new System.Drawing.Point(33, 576);
             this.noteTextBox.Name = "noteTextBox";
             this.noteTextBox.Size = new System.Drawing.Size(197, 20);
-            this.noteTextBox.TabIndex = 33;
+            this.noteTextBox.TabIndex = 8;
             // 
             // label5
             // 
@@ -176,7 +176,7 @@
             this.genderComboBox.Location = new System.Drawing.Point(33, 293);
             this.genderComboBox.Name = "genderComboBox";
             this.genderComboBox.Size = new System.Drawing.Size(197, 21);
-            this.genderComboBox.TabIndex = 27;
+            this.genderComboBox.TabIndex = 4;
             // 
             // birthDateDateTimePicker
             // 
@@ -184,7 +184,7 @@
             this.birthDateDateTimePicker.MaxDate = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);
             this.birthDateDateTimePicker.Name = "birthDateDateTimePicker";
             this.birthDateDateTimePicker.Size = new System.Drawing.Size(197, 20);
-            this.birthDateDateTimePicker.TabIndex = 26;
+            this.birthDateDateTimePicker.TabIndex = 3;
             this.birthDateDateTimePicker.Value = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);
             // 
             // studentsIDTextBox
@@ -192,35 +192,35 @@
             this.studentsIDTextBox.Location = new System.Drawing.Point(33, 360);
             this.studentsIDTextBox.Name = "studentsIDTextBox";
             this.studentsIDTextBox.Size = new System.Drawing.Size(199, 20);
-            this.studentsIDTextBox.TabIndex = 25;
+            this.studentsIDTextBox.TabIndex = 5;
             // 
             // middleNameTextBox
             // 
             this.middleNameTextBox.Location = new System.Drawing.Point(31, 156);
             this.middleNameTextBox.Name = "middleNameTextBox";
             this.middleNameTextBox.Size = new System.Drawing.Size(199, 20);
-            this.middleNameTextBox.TabIndex = 24;
+            this.middleNameTextBox.TabIndex = 2;
             // 
             // lastNameTextBox
             // 
             this.lastNameTextBox.Location = new System.Drawing.Point(31, 93);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(199, 20);
-            this.lastNameTextBox.TabIndex = 23;
+            this.lastNameTextBox.TabIndex = 1;
             // 
             // firstNameTextBox
             // 
             this.firstNameTextBox.Location = new System.Drawing.Point(31, 35);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(199, 20);
-            this.firstNameTextBox.TabIndex = 22;
+            this.firstNameTextBox.TabIndex = 0;
             // 
             // cancelButton
             // 
             this.cancelButton.Location = new System.Drawing.Point(238, 633);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(190, 23);
-            this.cancelButton.TabIndex = 41;
+            this.cancelButton.TabIndex = 10;
             this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);

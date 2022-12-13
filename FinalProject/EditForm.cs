@@ -51,8 +51,7 @@ namespace FinalProject
                 MessageBox.Show("Студент с таким ID уже существует!", "Ошибка уникальности", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (debtsTextBox.Text.Trim().Length == 0)
-            {
+            if (debtsTextBox.Text.Trim().Length != 0)
                 try
                 {
                     debts = int.Parse(debtsTextBox.Text.Trim());
@@ -62,7 +61,6 @@ namespace FinalProject
                     MessageBox.Show("Поле Кол-во долгов должно быть числом!", "Ошибка формата", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-            }
             firstName = firstNameTextBox.Text;
             if (firstName.Trim().Length == 0)
             {
